@@ -1,0 +1,50 @@
+{% load static %} 
+
+<div class="bg-base-100 border rounded-lg p-6 mb-6">
+    <!-- Top section-->
+    <div class="grid grid-cols-4 gap-x-4">
+
+        <div class="col-span-4 sm:col-span-2 md:col-span-1 h-full content-center">
+            <figure>
+                <img
+                    class="rounded-lg"
+                    src="{% static 'images/car.webp' %}"
+                    alt="Car" />
+            </figure>
+        </div>
+
+        <div class="col-span-4 mt-2 sm:mt-0 sm:col-span-2 md:col-span-3">
+
+            <div class="badge badge-info bg-[#1879ca] text-white rounded-none px-1 py-3 mb-4">
+                Top Pick
+            </div>
+    
+            <h2 class="text-xl font-bold mb-4">
+                {{ car.make }} {{ car.model }} 
+                <span class="text-sm font-normal">or similar</span>
+            </h2>
+            <div class="grid grid-cols-3">
+                <div class="col-span-3 md:col-span-1">
+                    <ul>
+                        <li>5 seats</li>
+                        <li>{{ car.year }}</li>
+                        <li>{{ car.color }}</li>
+                    </ul>
+                </div>
+                <div class="col-span-3 md:col-span-1">
+                    <ul>
+                        <li>{{ car.get_transmission_display }}</li>
+                    </ul>
+                </div>
+                <div class="col-span-3 md:col-span-1 text-left md:text-right mt-2 md:mt-0">
+                    <p>Price per day:</p>
+                    <p class="text-xl font-bold">£{{ car.price_per_day }}</p>
+                    <p class="text-green-500 mb-2">Free cancellation</p>
+                    <button class="btn btn-success btn-sm whitespace-nowrap w-full text-white">
+                        View Deal
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

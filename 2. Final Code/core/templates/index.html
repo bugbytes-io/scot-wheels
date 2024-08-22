@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<div class="md:px-1 lg:px-[10vw]">
+    <h1 class="text-2xl font-bold mb-8">Welcome to Scot Wheels!</h1>
+    <button class="btn lg:hidden mb-2" id="show-filter-btn">Show filters</button>
+
+    <div class="grid grid-cols-4 gap-x-4">
+        <section class="hidden lg:grid lg:col-span-1" id="filters">
+            <c-filters />
+        </section>
+        <section class="col-span-4 lg:col-span-3">
+            <c-car-list />
+        </section>
+    </div>
+</div>
+
+<script>
+    let btn = document.getElementById('show-filter-btn');
+    btn.addEventListener('click', (e) => {
+        let filterSection = document.getElementById('filters');
+        if (filterSection.classList.contains('hidden')) {
+            filterSection.classList.remove('hidden');
+            filterSection.classList.add('grid');
+            filterSection.classList.add('col-span-4');
+            filterSection.classList.add('mb-4');
+            e.target.textContent = 'Hide filters'
+        } else {
+            filterSection.classList.add('hidden');
+            filterSection.classList.remove('grid');            
+            filterSection.classList.remove('col-span-4');            
+            filterSection.classList.remove('mb-4');            
+            e.target.textContent = 'Show filters'
+        }
+    });
+</script>
+
+{% endblock %}

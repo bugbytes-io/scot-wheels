@@ -1,0 +1,29 @@
+<div class="join" 
+    hx-target="#car-list" 
+    hx-swap="outerHTML show:top"
+    hx-include="#filter-form">
+
+    <span class="step-links">
+        {% if page_obj.has_previous %}
+        <a hx-get="?page=1">
+            <button class="join-item btn">&laquo; first</button>
+        </a>
+        <a hx-get="?page={{ page_obj.previous_page_number }}">
+            <button class="join-item btn">previous</button>
+        </a>
+        {% endif %}
+
+        <span class="current mx-2">
+            Page {{ page_obj.number }} of {{ page_obj.paginator.num_pages }}.
+        </span>
+
+        {% if page_obj.has_next %}
+            <a hx-get="?page={{ page_obj.next_page_number }}">
+                <button class="join-item btn">next</button>
+            </a>
+            <a hx-get="?page={{ page_obj.paginator.num_pages }}">
+                <button class="join-item btn">last &raquo;</button>
+            </a>
+        {% endif %}
+    </span>
+</div>

@@ -1,0 +1,42 @@
+<div class="border rounded-lg px-3 pt-3">
+
+    <div class="flex justify-between items-center">
+        <h2 class="text-lg font-bold">Filter</h2>
+        <a hx-get="{% url 'index' %}" 
+            hx-target="#car-list" 
+            hx-swap="outerHTML"
+            hx-on::after-request="document.getElementById('filter-form').reset()"
+            class="text-blue-500 hover:text-blue-700 hover:underline text-xs cursor-pointer">
+            Clear all filters
+        </a>
+    </div>
+
+    <div class="divider my-2"></div>
+
+    <h3 class="font-bold">Transmission</h3>
+
+    <form id="filter-form">
+        
+        <div class="form-control" hx-target="#car-list" hx-include="#filter-form">
+            <label class="cursor-pointer label justify-start">
+                <input type="checkbox" 
+                    class="checkbox checkbox-info mr-2" 
+                    name="transmission"
+                    hx-get="{% url 'index' %}"
+                    value="M"/>
+                <span class="label-text">Manual</span>
+            </label>
+
+            <label class="cursor-pointer label justify-start">
+                <input type="checkbox" 
+                    class="checkbox checkbox-info mr-2" 
+                    name="transmission"
+                    hx-get="{% url 'index' %}"
+                    value="A"/>
+                <span class="label-text">Automatic</span>
+            </label>
+        </div>
+          
+    </form>
+
+</div>
